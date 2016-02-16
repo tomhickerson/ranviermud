@@ -380,22 +380,35 @@ var Events = {
 				});
 				break;
 			case 'class':
-				var classes = {w: '[W]arrior'};
+				var classes = {w: '[W]arrior', m: '[M]agicuser', t: '[T]hief', c: '[C]leric'};
 				arg.sayL10n(l10n, 'CLASS_SELECT');
 				for (var r in classes) {
 					arg.say(classes[r]);
 				}
 				arg.getSocket().once('data', function (cls) {
 					cls = cls.toString().trim().toLowerCase();
-					var classes = {w: "warrior"};
+					var classes = {w: "warrior", m: "magicuser", t: "thief", c: "cleric"};
 					if (!(cls in classes)) {
 						arg.sayL10n(l10n,'INVALID_CLASS');
 						return repeat();
 					}
 					arg.setAttribute('class', classes[cls]);
-					next(arg, 'done');
+					next(arg, 'alignment');
 				});
 				break;
+                        case 'alignment':
+                                arg.write("What is your alignment, [L]ight or [D]ark?");
+                                arg.getSocket().once('data', function (cls) {
+                                        cls = cls.toString().trim().toLowerCase();
+                                        var alignments = {l: "light", d: "dark"};
+                                        if (!(cls in alignments)) {
+                                                arg.say("That's not a correct alignment, please try again.");
+                                                return repeat();
+                                        }
+                                        arg.setAttribute('alignment', alignments[cls]);
+                                        next(arg, 'done');
+                                });
+                                break;
 			// 'done' assumes the argument passed to the event is a player, ...so always do that.
 			case 'done':
 				arg.setLocation(players.getDefaultLocation());

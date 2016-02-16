@@ -30,7 +30,8 @@ var Player = function(socket) {
 		health : 100,
 		level: 1,
 		experience: 0,
-		'class': ''
+		'class': '',
+                alignment: '' 
 	};
 
 	// Anything affecting the player
