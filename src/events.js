@@ -274,7 +274,11 @@ var Events = {
 		 *   check:  See if they actually want to create a player or not
 		 *   locale: Get the language they want to play in so we can give them
 		 *           the rest of the creation process in their language
-		 *   name:   ... get there name
+		 *   name:   ... get their name
+                 *   class:  get their base class. currently the main four will be available,
+                 *           but they will then have the ability to pick a subclass
+                 *   alignment: get their alignment. not as complex as lawful-good, chaotic-neutral, etc,
+                             but just a light vs dark scenario. TODO localise this part
 		 *   done:   This is always the end step, here we register them in with
 		 *           the rest of the logged in players and where they log in
 		 *
