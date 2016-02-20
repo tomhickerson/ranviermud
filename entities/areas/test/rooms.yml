@@ -1,9 +1,9 @@
 - 
   title: 
-    en: 'Test'
+    en: 'Underground Jail'
     es: 'ES - Test'
   description: 
-    en: 'You are in the test room. there isn''t much here'
+    en: 'Congratulations, you''re in jail. If you could remember your mother, she''d probably be ashamed of you right now. Apart from the dirt floor and the plain walls, there isn''t much here'
     es: 'ES-You are in the test room. there isn''t much here'
   exits: 
     - 
@@ -19,11 +19,11 @@
   area: 'test'
 - 
   title: 
-    en: 'Plain room'
+    en: 'Plain corner of the jail'
     es: 'ES - Plain room'
   location: 2
   description: 
-    en: 'Not a lot going on here, just a plain room.'
+    en: 'Not a lot going on here, just a plain corner of this underground jail.'
     es: 'ES - Not a lot going on here, just a plain room.'
   exits: 
     - 
@@ -31,12 +31,12 @@
       direction: 'south'
 - 
   title: 
-    en: 'Ladder'
-    es: 'ES-Ladder'
+    en: 'Ladder Room'
+    es: 'ES-Ladder Room'
   location: 3
   script: '3.js'
   description: 
-    en: 'You''re up a ladder, how silly.'
+    en: 'You''re up a ladder, in a small alcove. You think you can see sunlight coming from a small door here.'
     es: 'ES - You''re up a ladder, how silly.'
   exits: 
     - 
@@ -45,3 +45,23 @@
       leave_message: 
         en: ' slides down the ladder.'
         es: ' slides down the ladder. ES'
+    -
+      location: 4
+      direction: 'north'
+      leave_message:
+        en: ' opens a small door to the north and steps outside.'
+        es: ' opens a small door to the north and steps outside. ES'
+  area: 'test'	  
+-
+  title:
+    en: 'Under Lenin''s Statue'
+    es: 'ES- Under Lenin''s Statue'
+  location: 4
+  description:
+    en: 'You''re outside, having escaped your prison. You find yourself at the base of a massive status of V. I. Lenin, gesturing towards a park. In front of you is an orderly square. You feel the need to get away from this place.'
+    es: 'You''re outside, having escaped your prison. You find yourself at the base of a massive status of V. I. Lenin, gesturing towards a park. In front of you is an orderly square. You feel the need to get away from this place.'
+  exits:
+  -
+    location: 3
+    direction: 'south'
+  area: 'test'
