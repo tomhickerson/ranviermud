@@ -159,7 +159,8 @@ var Npc = function (config)
 	self.attributes = {
 		max_health : 0,
 		health: 0,
-		level: 1
+		level: 1,
+                alignment: "light"
 	};
 
 	// Anything affecting the player
@@ -194,11 +195,13 @@ var Npc = function (config)
 	self.getRoom      = function () { return self.room; };
 	self.getUuid      = function () { return self.uuid; };
 	self.getAttribute = function (attr) { return typeof self.attributes[attr] !== 'undefined' ? self.attributes[attr] : false; };
+        self.getAlignment = function () { return self.attibutes['alignment']; };
+        // maybe generate an isLight and isDark function someday?
 	self.setUuid      = function (uid) { self.uuid = uid; };
 	self.setRoom      = function (room) { self.room = room; };
-	self.setInventory = function (identifier) { self.inventory = identifier; }
-	self.setInCombat  = function (combat) { self.in_combat = combat; }
-	self.setContainer = function (uid) { self.container = uid; }
+	self.setInventory = function (identifier) { self.inventory = identifier; };
+	self.setInCombat  = function (combat) { self.in_combat = combat; };
+	self.setContainer = function (uid) { self.container = uid; };
 	self.setAttribute = function (attr, val) { self.attributes[attr] = val; };
 	self.removeAffect = function (aff) { delete self.affects[aff]; };
 	/**#@-*/
@@ -258,7 +261,7 @@ var Npc = function (config)
 		return typeof self.short_description === 'string' ?
 			self.short_description :
 			(locale in self.short_description ? self.short_description[locale] : 'UNTRANSLATED - Contact an admin');
-	}
+	};
 
 	/**
 	 * Get the title, localized if possible
@@ -270,7 +273,7 @@ var Npc = function (config)
 		return Array.isArray(self.keywords) ?
 			self.keywords :
 			(locale in self.keywords ? self.keywords[locale] : 'UNTRANSLATED - Contact an admin');
-	}
+	};
 
 	/**
 	 * check to see if an npc has a specific keyword
@@ -301,7 +304,7 @@ var Npc = function (config)
 		var base = [1, 20];
 		var damage = self.getAttribute('damage') ?
 			self.getAttribute('damage').split('-').map(function (i) { return parseInt(i, 10); })
-			: base
+			: base;
 		return {min: damage[0], max: damage[1]};
 	};
 
